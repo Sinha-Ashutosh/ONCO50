@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breast Cancer Drug Resistance Predictor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav style="display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:960px; margin:0 auto; padding:0 12px;">
+        <div style="font-weight:700; letter-spacing:0.3px;">BCDR Predictor</div>
+        <div style="display:flex; gap:10px;">
+          <a href="login.html" style="color:var(--text); text-decoration:none; padding:8px 10px; border-radius:8px;">Login</a>
+          <a href="signup.html" style="color:#071018; background:linear-gradient(90deg, var(--accent), var(--accent-2)); text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:600;">Sign up</a>
+        </div>
+      </nav>
+      <h1>Breast Cancer Drug Resistance Predictor</h1>
+      <p>Upload a CSV of patient and drug features to predict LN_IC50.</p>
+    </header>
+
+    <main>
+      <section class="upload-card">
+        <div class="uploader-grid">
+          <div class="dropzone" id="dropzone" aria-label="CSV dropzone">
+            <div class="dropzone-inner">
+              <div class="cloud">☁️</div>
+              <div class="dz-title">Drop file here</div>
+              <div class="dz-subtitle">or</div>
+              <button id="choose-file" type="button" class="ghost">Choose file</button>
+              <input id="file-input" type="file" accept=".csv" hidden />
+              <div class="dz-types">CSV only</div>
+            </div>
+          </div>
+
+          <form id="upload-form" class="cta-row">
+            <button id="upload-btn" type="button">Upload CSV</button>
+            <button id="submit-btn" type="submit">Predict</button>
+          </form>
+        </div>
+
+        <div id="hint">
+          Expected columns should match the training features. If your CSV contains an
+          <code>LN_IC50</code> column, it will be ignored during prediction and preserved in
+          the output for comparison.
+        </div>
+        <div id="message" role="status" aria-live="polite"></div>
+        <div id="sample">
+          <button id="download-sample">Download sample input format</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>
+        Model and pipeline are served locally. No data is uploaded to the internet.
+      </small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
