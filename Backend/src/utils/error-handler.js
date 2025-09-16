@@ -1,15 +1,16 @@
-const AppError = require('./error-handler');
 const { StatusCodes } = require('http-status-codes');
-
-class ClientError extends AppError {
-    constructor(name, message, explanation, StatusCodes) {
-         super(
-             name,
-             message,
-             explanation,
-             StatusCodes
-         );
+class AppErrors extends Error {
+    constructor(
+        name = 'AppError',
+        message = 'Something went wrong',
+        statusCode = StatusCodes.INTERNAL_SERVER_ERROR
+    ) {
+        super();
+        this.message = message,
+        this.explanation = this.explanation,
+        this.name = name,
+        this.statusCode = statusCode
     }
 }
 
-module.exports = ClientError;
+module.exports = AppErrors;
