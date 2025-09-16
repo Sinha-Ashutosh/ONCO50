@@ -1,5 +1,5 @@
 const express = require('express');
-
+const PredictionController = require('../../controllers/prediction-controller');
 const UserController = require('../../controllers/user-controller');
 const {AuthRequestValidator} = require('../../middlewares/index');
 
@@ -20,4 +20,7 @@ router.get(
     '/isAuthenticated',
     UserController.isAuthenticated
 );
+
+router.post('/file', PredictionController.handleFile);
+router.get('/file/:id', PredictionController.getFile);
 module.exports = router;
